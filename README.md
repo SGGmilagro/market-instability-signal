@@ -1,8 +1,7 @@
 # Market Instability Signal
 
 A real-time instability detection dashboard powered by on-chain prediction market data 
-from Polymarket (Polygon blockchain). Built in Python, runs in 3 commands.
-
+from Polymarket (Polygon blockchain). 
 ![dashboard](screenshot.png)
 
 ## The Idea
