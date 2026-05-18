@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Market Instability Signal</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+
+  :root {
+    --bg: #030712;
+    --surface: #0d1117;
+    --border: #1f2937;
+    --red: #ef4444;
+    --orange: #f97316;
+    --yellow: #eab308;
+    --green: #22c55e;
+    --text: #f9fafb;
+    --muted: #6b7280;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .title-block h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .title-block h1 span { color: var(--red); }
+  .title-block p { color: var(--muted); font-size: 0.72rem; margin-top: 0.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .live-badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: #1a0a0a; border: 1px solid #7f1d1d;
+    padding: 0.4rem 1rem; border-radius: 999px;
+    font-size: 0.7rem; color: var(--red);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse 1.5s infinite; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+
+  .stat-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+  .stat-value { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; }
+  .stat-sub { font-size: 0.65rem; color: var(--muted); margin-top: 0.2rem; }
+
+  .grid-main {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  canvas { max-height: 300px; }
+
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .signal-card {
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    border-left: 3px solid;
+  }
+
+  .signal-card.LONG   { border-color: var(--green);  background: #051a0e; }
+  .signal-card.SHORT  { border-color: var(--red);    background: #1a0505; }
+  .signal-card.WATCH  { border-color: var(--yellow); background: #1a1505; }
+
+  .signal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+
+  .signal-badge {
+    font-size: 0.65rem; font-weight: 700;
+    padding: 0.15rem 0.5rem; border-radius: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  .LONG  .signal-badge { background: #14532d; color: #86efac; }
+  .SHORT .signal-badge { background: #7f1d1d; color: #fca5a5; }
+  .WATCH .signal-badge { background: #78350f; color: #fcd34d; }
+
+  .signal-cluster { font-size: 0.65rem; color: var(--muted); }
+  .signal-market  { font-size: 0.72rem; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; }
+
+  .signal-meta {
+    display: flex; gap: 1rem;
+    font-size: 0.65rem; color: var(--muted);
+  }
+
+  .dir-rising  { color: var(--red); }
+  .dir-falling { color: var(--green); }
+  .dir-flat    { color: var(--yellow); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.7rem; }
+  th {
+    text-align: left; color: var(--muted); font-weight: 400;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    font-size: 0.62rem; padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 0.55rem 0.75rem; border-bottom: 1px solid #111827; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #111827; }
+
+  .score-pill {
+    display: inline-block; padding: 0.15rem 0.5rem;
+    border-radius: 999px; font-size: 0.68rem; font-weight: 700;
+  }
+  .score-high { background: #7f1d1d; color: #fca5a5; }
+  .score-med  { background: #78350f; color: #fcd34d; }
+  .score-low  { background: #14532d; color: #86efac; }
+
+  .alpha-badge {
+    display: inline-block; padding: 0.15rem 0.5rem;
+    border-radius: 4px; font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .alpha-LONG    { background: #14532d; color: #86efac; }
+  .alpha-SHORT   { background: #7f1d1d; color: #fca5a5; }
+  .alpha-WATCH   { background: #78350f; color: #fcd34d; }
+  .alpha-NEUTRAL { background: #1f2937; color: #6b7280; }
+
+  footer {
+    margin-top: 1.5rem; padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.62rem; color: var(--muted);
+    text-align: center; letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-block">
+    <h1>Market <span>Instability</span> Signal</h1>
+    <p>Entropy-weighted risk index · Polymarket on Polygon · On-chain prediction markets</p>
+  </div>
+  <div class="live-badge"><div class="dot"></div> Live Data</div>
+</header>
+
+<div class="stats-row" id="statsRow"></div>
+
+<div class="grid-main">
+  <div class="card" style="margin-bottom:0">
+    <div class="card-title">Instability Score — Top 15 Markets</div>
+    <canvas id="barChart"></canvas>
+  </div>
+  <div class="card" style="margin-bottom:0">
+    <div class="card-title">Cluster Risk Heatmap</div>
+    <canvas id="clusterChart"></canvas>
+  </div>
+</div>
+
+<div style="margin-top:1.5rem" class="card">
+  <div class="card-title">Alpha Signal Feed — LONG / SHORT / WATCH</div>
+  <div class="signal-grid" id="signalGrid"></div>
+</div>
+
+<div class="card">
+  <div class="card-title">Full Market Detail — Instability Index</div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Market</th>
+        <th>Cluster</th>
+        <th>Price</th>
+        <th>Entropy</th>
+        <th>Direction</th>
+        <th>Liquidity (USDC)</th>
+        <th>Fragility</th>
+        <th>Score</th>
+        <th>Signal</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+
+<footer>
+  Data: Polymarket Gamma API + CLOB API (public, no auth) · Settlement: Polygon PoS ·
+  Scoring: Shannon Entropy (35%) + Entropy Velocity (25%) + Liquidity Fragility (25%) + Volume Acceleration (15%)
+</footer>
+
+<script>
+const markets  = [{"market": "Will WTI Crude Oil (WTI) hit (HIGH) $120 in May?", "price": 0.23, "volume_24hr": 154027.995387, "entropy": 0.778, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 71888.43, "liquidity_score": 0.065, "vol_acceleration": -0.3333, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 46.36, "alpha_signal": "NEUTRAL", "market_short": "Will WTI Crude Oil (WTI) hit (HIGH) $120 in May?..."}, {"market": "MicroStrategy sells any Bitcoin by June 30, 2026?", "price": 0.668, "volume_24hr": 175913.09183000002, "entropy": 0.917, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 62802.66, "liquidity_score": 0.0737, "vol_acceleration": -0.603, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 49.42, "alpha_signal": "WATCH", "market_short": "MicroStrategy sells any Bitcoin by June 30, 2026?..."}, {"market": "Starmer out by June 30, 2026?", "price": 0.35, "volume_24hr": 249809.30847399984, "entropy": 0.9341, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 88883.29, "liquidity_score": 0.0533, "vol_acceleration": -0.5847, "cluster": "Other", "cluster_contagion": 4, "instability_score": 49.64, "alpha_signal": "WATCH", "market_short": "Starmer out by June 30, 2026?..."}, {"market": "Will Mojtaba Khamenei be head of state in Iran end of 2026?", "price": 0.649, "volume_24hr": 161111.13375400004, "entropy": 0.935, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 87579.12, "liquidity_score": 0.054, "vol_acceleration": -0.496, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.35, "alpha_signal": "WATCH", "market_short": "Will Mojtaba Khamenei be head of state in Iran end o..."}, {"market": "US x Iran permanent peace deal by December 31, 2026?", "price": 0.63, "volume_24hr": 184680.67377600007, "entropy": 0.9507, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 649102.01, "liquidity_score": 0.0076, "vol_acceleration": -0.3831, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.59, "alpha_signal": "WATCH", "market_short": "US x Iran permanent peace deal by December 31, 2026?..."}, {"market": "US x Iran permanent peace deal by June 15, 2026?", "price": 0.15, "volume_24hr": 131229.29916100003, "entropy": 0.6098, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 65834.42, "liquidity_score": 0.0706, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.61, "alpha_signal": "WATCH", "market_short": "US x Iran permanent peace deal by June 15, 2026?..."}, {"market": "Will Bitcoin dip to $75,000 in May?", "price": 0.74, "volume_24hr": 188034.6904239999, "entropy": 0.8267, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 61420.73, "liquidity_score": 0.0753, "vol_acceleration": 0.0229, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 50.99, "alpha_signal": "WATCH", "market_short": "Will Bitcoin dip to $75,000 in May?..."}, {"market": "MicroStrategy sells any Bitcoin by May 31, 2026?", "price": 0.41, "volume_24hr": 284283.578417, "entropy": 0.9765, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 54657.23, "liquidity_score": 0.0838, "vol_acceleration": -0.4541, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 52.87, "alpha_signal": "WATCH", "market_short": "MicroStrategy sells any Bitcoin by May 31, 2026?..."}, {"market": "Iran closes its airspace by May 31?", "price": 0.51, "volume_24hr": 276246.108751, "entropy": 0.9997, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 54414.95, "liquidity_score": 0.0842, "vol_acceleration": -0.3986, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 54.11, "alpha_signal": "WATCH", "market_short": "Iran closes its airspace by May 31?..."}, {"market": "Iran closes its airspace by May 21?", "price": 0.19, "volume_24hr": 249100.78936800009, "entropy": 0.7015, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 41186.89, "liquidity_score": 0.1083, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 54.76, "alpha_signal": "WATCH", "market_short": "Iran closes its airspace by May 21?..."}, {"market": "Will Naftali Bennett be the next Prime Minister of Israel?", "price": 0.4, "volume_24hr": 165709.033542, "entropy": 0.971, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 47989.55, "liquidity_score": 0.0944, "vol_acceleration": -0.1767, "cluster": "Other", "cluster_contagion": 4, "instability_score": 55.02, "alpha_signal": "WATCH", "market_short": "Will Naftali Bennett be the next Prime Minister of I..."}, {"market": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in May?", "price": 0.61, "volume_24hr": 314479.61285400006, "entropy": 0.9648, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 42258.33, "liquidity_score": 0.1058, "vol_acceleration": -0.1654, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 55.17, "alpha_signal": "WATCH", "market_short": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in May?..."}, {"market": "Will Thomas Massie be the Republican nominee for KY-04?", "price": 0.37, "volume_24hr": 208981.85334600013, "entropy": 0.9507, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 139496.33, "liquidity_score": 0.0346, "vol_acceleration": 0.1924, "cluster": "Other", "cluster_contagion": 4, "instability_score": 55.58, "alpha_signal": "LONG", "market_short": "Will Thomas Massie be the Republican nominee for KY-..."}, {"market": "Iran closes its airspace by May 21?", "price": 0.26, "volume_24hr": 256134.5041970001, "entropy": 0.8267, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 33992.32, "liquidity_score": 0.1282, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 59.64, "alpha_signal": "LONG", "market_short": "Iran closes its airspace by May 21?..."}, {"market": "Iran closes its airspace by May 24?", "price": 0.43, "volume_24hr": 412155.959797, "entropy": 0.9858, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 52326.29, "liquidity_score": 0.0872, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 64.18, "alpha_signal": "LONG", "market_short": "Iran closes its airspace by May 24?..."}];
+const clusters = [{"cluster": "Energy", "avg_score": 38.605714285714285, "count": 7, "contagion": 2}, {"cluster": "Iran", "avg_score": 38.2156, "count": 25, "contagion": 8}, {"cluster": "Crypto", "avg_score": 32.0495, "count": 20, "contagion": 4}, {"cluster": "Pandemic", "avg_score": 26.36, "count": 1, "contagion": 0}, {"cluster": "Other", "avg_score": 24.414864864864864, "count": 37, "contagion": 4}, {"cluster": "Geopolitical", "avg_score": 23.9325, "count": 4, "contagion": 0}, {"cluster": "Macro", "avg_score": 17.415, "count": 6, "contagion": 0}];
+const signals  = [{"market": "Iran closes its airspace by May 24?", "price": 0.43, "volume_24hr": 412155.959797, "entropy": 0.9858, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 52326.29, "liquidity_score": 0.0872, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 64.18, "alpha_signal": "LONG"}, {"market": "Iran closes its airspace by May 21?", "price": 0.26, "volume_24hr": 256134.5041970001, "entropy": 0.8267, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 33992.32, "liquidity_score": 0.1282, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 59.64, "alpha_signal": "LONG"}, {"market": "Will Thomas Massie be the Republican nominee for KY-04?", "price": 0.37, "volume_24hr": 208981.85334600013, "entropy": 0.9507, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 139496.33, "liquidity_score": 0.0346, "vol_acceleration": 0.1924, "cluster": "Other", "cluster_contagion": 4, "instability_score": 55.58, "alpha_signal": "LONG"}, {"market": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in May?", "price": 0.61, "volume_24hr": 314479.61285400006, "entropy": 0.9648, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 42258.33, "liquidity_score": 0.1058, "vol_acceleration": -0.1654, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 55.17, "alpha_signal": "WATCH"}, {"market": "Will Naftali Bennett be the next Prime Minister of Israel?", "price": 0.4, "volume_24hr": 165709.033542, "entropy": 0.971, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 47989.55, "liquidity_score": 0.0944, "vol_acceleration": -0.1767, "cluster": "Other", "cluster_contagion": 4, "instability_score": 55.02, "alpha_signal": "WATCH"}, {"market": "Iran closes its airspace by May 21?", "price": 0.19, "volume_24hr": 249100.78936800009, "entropy": 0.7015, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 41186.89, "liquidity_score": 0.1083, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 54.76, "alpha_signal": "WATCH"}, {"market": "Iran closes its airspace by May 31?", "price": 0.51, "volume_24hr": 276246.108751, "entropy": 0.9997, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 54414.95, "liquidity_score": 0.0842, "vol_acceleration": -0.3986, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 54.11, "alpha_signal": "WATCH"}, {"market": "MicroStrategy sells any Bitcoin by May 31, 2026?", "price": 0.41, "volume_24hr": 284283.578417, "entropy": 0.9765, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 54657.23, "liquidity_score": 0.0838, "vol_acceleration": -0.4541, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 52.87, "alpha_signal": "WATCH"}, {"market": "Will Bitcoin dip to $75,000 in May?", "price": 0.74, "volume_24hr": 188034.6904239999, "entropy": 0.8267, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 61420.73, "liquidity_score": 0.0753, "vol_acceleration": 0.0229, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 50.99, "alpha_signal": "WATCH"}, {"market": "US x Iran permanent peace deal by June 15, 2026?", "price": 0.15, "volume_24hr": 131229.29916100003, "entropy": 0.6098, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 65834.42, "liquidity_score": 0.0706, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.61, "alpha_signal": "WATCH"}, {"market": "US x Iran permanent peace deal by December 31, 2026?", "price": 0.63, "volume_24hr": 184680.67377600007, "entropy": 0.9507, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 649102.01, "liquidity_score": 0.0076, "vol_acceleration": -0.3831, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.59, "alpha_signal": "WATCH"}, {"market": "Will Mojtaba Khamenei be head of state in Iran end of 2026?", "price": 0.649, "volume_24hr": 161111.13375400004, "entropy": 0.935, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 87579.12, "liquidity_score": 0.054, "vol_acceleration": -0.496, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.35, "alpha_signal": "WATCH"}];
+const allData  = [{"market": "Iran closes its airspace by May 24?", "price": 0.43, "volume_24hr": 412155.959797, "entropy": 0.9858, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 52326.29, "liquidity_score": 0.0872, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 64.18, "alpha_signal": "LONG"}, {"market": "Iran closes its airspace by May 21?", "price": 0.26, "volume_24hr": 256134.5041970001, "entropy": 0.8267, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 33992.32, "liquidity_score": 0.1282, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 59.64, "alpha_signal": "LONG"}, {"market": "Will Thomas Massie be the Republican nominee for KY-04?", "price": 0.37, "volume_24hr": 208981.85334600013, "entropy": 0.9507, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 139496.33, "liquidity_score": 0.0346, "vol_acceleration": 0.1924, "cluster": "Other", "cluster_contagion": 4, "instability_score": 55.58, "alpha_signal": "LONG"}, {"market": "Will WTI Crude Oil (WTI) hit (HIGH) $110 in May?", "price": 0.61, "volume_24hr": 314479.61285400006, "entropy": 0.9648, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 42258.33, "liquidity_score": 0.1058, "vol_acceleration": -0.1654, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 55.17, "alpha_signal": "WATCH"}, {"market": "Will Naftali Bennett be the next Prime Minister of Israel?", "price": 0.4, "volume_24hr": 165709.033542, "entropy": 0.971, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 47989.55, "liquidity_score": 0.0944, "vol_acceleration": -0.1767, "cluster": "Other", "cluster_contagion": 4, "instability_score": 55.02, "alpha_signal": "WATCH"}, {"market": "Iran closes its airspace by May 21?", "price": 0.19, "volume_24hr": 249100.78936800009, "entropy": 0.7015, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 41186.89, "liquidity_score": 0.1083, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 54.76, "alpha_signal": "WATCH"}, {"market": "Iran closes its airspace by May 31?", "price": 0.51, "volume_24hr": 276246.108751, "entropy": 0.9997, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 54414.95, "liquidity_score": 0.0842, "vol_acceleration": -0.3986, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 54.11, "alpha_signal": "WATCH"}, {"market": "MicroStrategy sells any Bitcoin by May 31, 2026?", "price": 0.41, "volume_24hr": 284283.578417, "entropy": 0.9765, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 54657.23, "liquidity_score": 0.0838, "vol_acceleration": -0.4541, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 52.87, "alpha_signal": "WATCH"}, {"market": "Will Bitcoin dip to $75,000 in May?", "price": 0.74, "volume_24hr": 188034.6904239999, "entropy": 0.8267, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 61420.73, "liquidity_score": 0.0753, "vol_acceleration": 0.0229, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 50.99, "alpha_signal": "WATCH"}, {"market": "US x Iran permanent peace deal by June 15, 2026?", "price": 0.15, "volume_24hr": 131229.29916100003, "entropy": 0.6098, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 65834.42, "liquidity_score": 0.0706, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.61, "alpha_signal": "WATCH"}, {"market": "US x Iran permanent peace deal by December 31, 2026?", "price": 0.63, "volume_24hr": 184680.67377600007, "entropy": 0.9507, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 649102.01, "liquidity_score": 0.0076, "vol_acceleration": -0.3831, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.59, "alpha_signal": "WATCH"}, {"market": "Will Mojtaba Khamenei be head of state in Iran end of 2026?", "price": 0.649, "volume_24hr": 161111.13375400004, "entropy": 0.935, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 87579.12, "liquidity_score": 0.054, "vol_acceleration": -0.496, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 50.35, "alpha_signal": "WATCH"}, {"market": "Starmer out by June 30, 2026?", "price": 0.35, "volume_24hr": 249809.30847399984, "entropy": 0.9341, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 88883.29, "liquidity_score": 0.0533, "vol_acceleration": -0.5847, "cluster": "Other", "cluster_contagion": 4, "instability_score": 49.64, "alpha_signal": "WATCH"}, {"market": "MicroStrategy sells any Bitcoin by June 30, 2026?", "price": 0.668, "volume_24hr": 175913.09183000002, "entropy": 0.917, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 62802.66, "liquidity_score": 0.0737, "vol_acceleration": -0.603, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 49.42, "alpha_signal": "WATCH"}, {"market": "Will WTI Crude Oil (WTI) hit (HIGH) $120 in May?", "price": 0.23, "volume_24hr": 154027.995387, "entropy": 0.778, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 71888.43, "liquidity_score": 0.065, "vol_acceleration": -0.3333, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 46.36, "alpha_signal": "NEUTRAL"}, {"market": "Will Bitcoin dip to $70,000 in May?", "price": 0.22, "volume_24hr": 174774.51558500007, "entropy": 0.7602, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 140700.1, "liquidity_score": 0.0343, "vol_acceleration": -0.1589, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 46.27, "alpha_signal": "WATCH"}, {"market": "Strait of Hormuz traffic returns to normal by end of June?", "price": 0.28, "volume_24hr": 203083.05350500005, "entropy": 0.8555, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 412131.96, "liquidity_score": 0.012, "vol_acceleration": -0.7867, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 44.34, "alpha_signal": "WATCH"}, {"market": "Will the U.S. invade Iran before 2027?", "price": 0.31, "volume_24hr": 241489.10143600008, "entropy": 0.8932, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 865336.07, "liquidity_score": 0.0057, "vol_acceleration": -0.9419, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 44.34, "alpha_signal": "WATCH"}, {"market": "Will Crude Oil (CL) hit (HIGH) $140 by end of June?", "price": 0.2, "volume_24hr": 120616.47122000002, "entropy": 0.7219, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 66712.22, "liquidity_score": 0.0697, "vol_acceleration": -0.3651, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 44.27, "alpha_signal": "NEUTRAL"}, {"market": "Will WTI Crude Oil (WTI) hit (HIGH) $105 in May?", "price": 0.88, "volume_24hr": 125690.13022199996, "entropy": 0.5294, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 34565.74, "liquidity_score": 0.1264, "vol_acceleration": 0.284, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 43.82, "alpha_signal": "NEUTRAL"}, {"market": "US x Iran permanent peace deal by June 30, 2026?", "price": 0.25, "volume_24hr": 389077.62548499985, "entropy": 0.8113, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 379586.04, "liquidity_score": 0.013, "vol_acceleration": -0.7286, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 43.26, "alpha_signal": "WATCH"}, {"market": "Will Bitcoin reach $85,000 in May?", "price": 0.12, "volume_24hr": 367439.1224029999, "entropy": 0.5294, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 161922.27, "liquidity_score": 0.03, "vol_acceleration": 0.5253, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 43.22, "alpha_signal": "WATCH"}, {"market": "Starmer out by December 31, 2026?", "price": 0.78, "volume_24hr": 116897.436645, "entropy": 0.7602, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 122146.38, "liquidity_score": 0.0393, "vol_acceleration": -0.6846, "cluster": "Other", "cluster_contagion": 4, "instability_score": 42.45, "alpha_signal": "WATCH"}, {"market": "Will Reza Pahlavi lead Iran in 2026?", "price": 0.066, "volume_24hr": 1643877.7950409993, "entropy": 0.3508, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 111239.0, "liquidity_score": 0.043, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 40.85, "alpha_signal": "WATCH"}, {"market": "Lai Ching-te impeached by June 30?", "price": 0.037, "volume_24hr": 445054.272567, "entropy": 0.2284, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 28145.09, "liquidity_score": 0.1509, "vol_acceleration": 1.0, "cluster": "Other", "cluster_contagion": 4, "instability_score": 39.27, "alpha_signal": "WATCH"}, {"market": "Iran closes its airspace by May 18?", "price": 0.043, "volume_24hr": 862406.3204240005, "entropy": 0.2559, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 39886.71, "liquidity_score": 0.1114, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 39.24, "alpha_signal": "WATCH"}, {"market": "Starmer out by May 31, 2026?", "price": 0.098, "volume_24hr": 226672.8789559999, "entropy": 0.4626, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 67816.07, "liquidity_score": 0.0687, "vol_acceleration": 0.0247, "cluster": "Other", "cluster_contagion": 4, "instability_score": 38.09, "alpha_signal": "WATCH"}, {"market": "Will Trump agree to Iranian enrichment of uranium by May 31?", "price": 0.038, "volume_24hr": 610844.4749070001, "entropy": 0.233, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 54220.6, "liquidity_score": 0.0844, "vol_acceleration": 1.0, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 37.77, "alpha_signal": "WATCH"}, {"market": "US x Iran diplomatic meeting by May 31, 2026?", "price": 0.14, "volume_24hr": 107391.49241700004, "entropy": 0.5842, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 70593.28, "liquidity_score": 0.0661, "vol_acceleration": -0.6637, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 37.12, "alpha_signal": "WATCH"}, {"market": "Will Donald Trump announce that the United States blockade of the Strait of Hormuz has been lifted by May 31, 2026?", "price": 0.15, "volume_24hr": 100939.90154999998, "entropy": 0.6098, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 97254.5, "liquidity_score": 0.0489, "vol_acceleration": -0.7918, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 36.63, "alpha_signal": "WATCH"}, {"market": "Will Bitcoin hit $150k by June 30, 2026?", "price": 0.014, "volume_24hr": 5821652.894196, "entropy": 0.1063, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 19822.56, "liquidity_score": 0.2014, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 36.26, "alpha_signal": "WATCH"}, {"market": "Will Burnley FC win on 2026-05-18?", "price": 0.035, "volume_24hr": 464568.24082899943, "entropy": 0.2189, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 630889.83, "liquidity_score": 0.0079, "vol_acceleration": 1.0, "cluster": "Other", "cluster_contagion": 4, "instability_score": 35.36, "alpha_signal": "WATCH"}, {"market": "Will WTI Crude Oil (WTI) hit (HIGH) $130 in May?", "price": 0.11, "volume_24hr": 125021.29716400005, "entropy": 0.4999, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 116434.79, "liquidity_score": 0.0412, "vol_acceleration": -0.4631, "cluster": "Energy", "cluster_contagion": 2, "instability_score": 35.05, "alpha_signal": "NEUTRAL"}, {"market": "Will the US confirm that aliens exist before 2027?", "price": 0.13, "volume_24hr": 259605.9565869999, "entropy": 0.5574, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 881229.45, "liquidity_score": 0.0056, "vol_acceleration": -0.9386, "cluster": "Other", "cluster_contagion": 4, "instability_score": 32.61, "alpha_signal": "WATCH"}, {"market": "Will Trump agree to Iranian transit fees in the Strait of Hormuz by May 31?", "price": 0.025, "volume_24hr": 120679.2207479996, "entropy": 0.1687, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 85490.5, "liquidity_score": 0.0553, "vol_acceleration": 0.6674, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 32.29, "alpha_signal": "WATCH"}, {"market": "Starmer out by May 19, 2026?", "price": 0.009, "volume_24hr": 373783.7522059999, "entropy": 0.0741, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 61793.66, "liquidity_score": 0.0749, "vol_acceleration": 1.0, "cluster": "Other", "cluster_contagion": 4, "instability_score": 31.97, "alpha_signal": "WATCH"}, {"market": "Will Elon Musk win his case against Sam Altman?", "price": 0.004, "volume_24hr": 140245.832454, "entropy": 0.0376, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 24352.96, "liquidity_score": 0.1703, "vol_acceleration": 0.7453, "cluster": "Other", "cluster_contagion": 4, "instability_score": 31.16, "alpha_signal": "WATCH"}, {"market": "Iran agrees to surrender enriched uranium stockpile by May 31, 2026?", "price": 0.048, "volume_24hr": 142471.65545599998, "entropy": 0.2778, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 138902.15, "liquidity_score": 0.0347, "vol_acceleration": -0.1263, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 29.64, "alpha_signal": "WATCH"}, {"market": "US x Iran permanent peace deal by May 31, 2026?", "price": 0.08, "volume_24hr": 1347002.010445, "entropy": 0.4022, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 459436.42, "liquidity_score": 0.0108, "vol_acceleration": -0.639, "cluster": "Iran", "cluster_contagion": 8, "instability_score": 29.55, "alpha_signal": "WATCH"}, {"market": "Will Putin visit China by May 31?", "price": 0.998, "volume_24hr": 237854.11040099972, "entropy": 0.0208, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 134556.17, "liquidity_score": 0.0358, "vol_acceleration": 1.0, "cluster": "Geopolitical", "cluster_contagion": 0, "instability_score": 29.12, "alpha_signal": "NEUTRAL"}, {"market": "Will Amazon be the largest company in the world by market cap on May 31?", "price": 0.001, "volume_24hr": 211274.695, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 46844.23, "liquidity_score": 0.0964, "vol_acceleration": 0.8268, "cluster": "Other", "cluster_contagion": 4, "instability_score": 29.01, "alpha_signal": "WATCH"}, {"market": "Will Bitcoin dip to $65,000 in May?", "price": 0.053, "volume_24hr": 132632.13221499996, "entropy": 0.299, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 109185.36, "liquidity_score": 0.0438, "vol_acceleration": -0.3937, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.61, "alpha_signal": "WATCH"}, {"market": "Will the price of Bitcoin be above $80,000 on May 18?", "price": 0.001, "volume_24hr": 520921.085634, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 291966.97, "liquidity_score": 0.0168, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.32, "alpha_signal": "WATCH"}, {"market": "Will the price of Ethereum be above $1,800 on May 18?", "price": 0.999, "volume_24hr": 136377.906983, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 303126.95, "liquidity_score": 0.0162, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.3, "alpha_signal": "WATCH"}, {"market": "Will the price of Bitcoin be above $78,000 on May 18?", "price": 0.001, "volume_24hr": 293689.29744700016, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 304451.66, "liquidity_score": 0.0162, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.3, "alpha_signal": "WATCH"}, {"market": "Will the price of Bitcoin be above $72,000 on May 18?", "price": 0.999, "volume_24hr": 405262.52030800027, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 303695.25, "liquidity_score": 0.0162, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.3, "alpha_signal": "WATCH"}, {"market": "Will the price of Bitcoin be above $84,000 on May 18?", "price": 0.001, "volume_24hr": 243850.43055399993, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 325777.56, "liquidity_score": 0.0151, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.28, "alpha_signal": "WATCH"}, {"market": "Will the price of Bitcoin be above $74,000 on May 18?", "price": 0.999, "volume_24hr": 479980.28976199945, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 363817.33, "liquidity_score": 0.0136, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.24, "alpha_signal": "WATCH"}, {"market": "Will the price of Ethereum be above $2,100 on May 18?", "price": 0.999, "volume_24hr": 130122.92041399996, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 357848.49, "liquidity_score": 0.0138, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.24, "alpha_signal": "WATCH"}, {"market": "Will the price of Bitcoin be above $82,000 on May 18?", "price": 0.001, "volume_24hr": 475914.331377, "entropy": 0.0114, "entropy_velocity": 0, "entropy_direction": "flat", "liquidity": 400921.16, "liquidity_score": 0.0123, "vol_acceleration": 1.0, "cluster": "Crypto", "cluster_contagion": 4, "instability_score": 28.21, "alpha_signal": "WATCH"}];
+
+function scoreColor(s) {
+  if (s >= 60) return '#ef4444';
+  if (s >= 45) return '#f97316';
+  return '#eab308';
+}
+
+// ── STATS ROW ────────────────────────────────────────────────────────────────
+const statsRow   = document.getElementById('statsRow');
+const topScore   = Math.max(...allData.map(m => m.instability_score));
+const topMarket  = allData.find(m => m.instability_score === topScore);
+const longCount  = allData.filter(m => m.alpha_signal === 'LONG').length;
+const watchCount = allData.filter(m => m.alpha_signal === 'WATCH').length;
+const topCluster = clusters[0]?.cluster || 'N/A';
+
+const stats = [
+  { label: 'Top Instability Score',  value: topScore.toFixed(1),  sub: topMarket?.market?.slice(0,35) + '...' },
+  { label: 'LONG Signals',           value: longCount,             sub: 'high entropy + rising + underpriced' },
+  { label: 'WATCH Signals',          value: watchCount,            sub: 'systemic or extreme entropy' },
+  { label: 'Hottest Cluster',        value: topCluster,            sub: `avg score ${clusters[0]?.avg_score?.toFixed(1)}` },
+];
+
+stats.forEach(s => {
+  statsRow.innerHTML += `
+    <div class="stat-card">
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-value">${s.value}</div>
+      <div class="stat-sub">${s.sub}</div>
+    </div>`;
+});
+
+// ── BAR CHART ────────────────────────────────────────────────────────────────
+const barCtx = document.getElementById('barChart').getContext('2d');
+new Chart(barCtx, {
+  type: 'bar',
+  data: {
+    labels: markets.map(d => d.market_short),
+    datasets: [{
+      data: markets.map(d => d.instability_score),
+      backgroundColor: markets.map(d => scoreColor(d.instability_score)),
+      borderRadius: 4,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => ` Score: ${ctx.raw}` }
+    }},
+    scales: {
+      x: { grid: { color: '#1f2937' }, ticks: { color: '#6b7280', font: { family: 'Space Mono', size: 10 } }, max: 100 },
+      y: { grid: { display: false }, ticks: { color: '#9ca3af', font: { family: 'Space Mono', size: 9 } } }
+    }
+  }
+});
+
+// ── CLUSTER CHART ────────────────────────────────────────────────────────────
+const clusterCtx = document.getElementById('clusterChart').getContext('2d');
+new Chart(clusterCtx, {
+  type: 'bar',
+  data: {
+    labels: clusters.map(c => c.cluster),
+    datasets: [{
+      label: 'Avg Instability Score',
+      data: clusters.map(c => parseFloat(c.avg_score).toFixed(1)),
+      backgroundColor: clusters.map(c => scoreColor(c.avg_score)),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => ` Avg Score: ${ctx.raw}` }
+    }},
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#9ca3af', font: { family: 'Space Mono', size: 10 } } },
+      y: { grid: { color: '#1f2937' }, ticks: { color: '#6b7280', font: { family: 'Space Mono', size: 10 } }, max: 100 }
+    }
+  }
+});
+
+// ── SIGNAL FEED ──────────────────────────────────────────────────────────────
+const signalGrid = document.getElementById('signalGrid');
+if (signals.length === 0) {
+  signalGrid.innerHTML = '<p style="color:#6b7280;font-size:0.75rem">No LONG/SHORT/WATCH signals in current data.</p>';
+} else {
+  signals.forEach(s => {
+    const dirClass = `dir-${s.entropy_direction}`;
+    const dirArrow = s.entropy_direction === 'rising' ? '↑' : s.entropy_direction === 'falling' ? '↓' : '→';
+    signalGrid.innerHTML += `
+      <div class="signal-card ${s.alpha_signal}">
+        <div class="signal-header">
+          <span class="signal-badge">${s.alpha_signal}</span>
+          <span class="signal-cluster">${s.cluster} · contagion: ${s.cluster_contagion}</span>
+        </div>
+        <div class="signal-market">${s.market}</div>
+        <div class="signal-meta">
+          <span>price: ${s.price.toFixed(2)}</span>
+          <span>entropy: ${s.entropy}</span>
+          <span class="${dirClass}">${dirArrow} ${s.entropy_direction}</span>
+          <span>score: ${s.instability_score}</span>
+        </div>
+      </div>`;
+  });
+}
+
+// ── TABLE ────────────────────────────────────────────────────────────────────
+const tbody = document.getElementById('tableBody');
+allData.forEach((d, i) => {
+  const scoreClass = d.instability_score >= 60 ? 'score-high' : d.instability_score >= 45 ? 'score-med' : 'score-low';
+  const dirArrow   = d.entropy_direction === 'rising'  ? '<span class="dir-rising">↑ rising</span>'
+                   : d.entropy_direction === 'falling' ? '<span class="dir-falling">↓ falling</span>'
+                   : '<span class="dir-flat">→ flat</span>';
+  const liquidity  = d.liquidity != null ? `$${parseFloat(d.liquidity).toLocaleString(undefined, {maximumFractionDigits:0})}` : '—';
+  const fragility  = d.liquidity_score != null ? parseFloat(d.liquidity_score).toFixed(3) : '—';
+
+  tbody.innerHTML += `
+    <tr>
+      <td style="color:#6b7280">${i+1}</td>
+      <td>${d.market}</td>
+      <td style="color:#6b7280">${d.cluster}</td>
+      <td>${d.price.toFixed(2)}</td>
+      <td>${d.entropy}</td>
+      <td>${dirArrow}</td>
+      <td style="color:#6b7280">${liquidity}</td>
+      <td style="color:#6b7280">${fragility}</td>
+      <td><span class="score-pill ${scoreClass}">${d.instability_score}</span></td>
+      <td><span class="alpha-badge alpha-${d.alpha_signal}">${d.alpha_signal}</span></td>
+    </tr>`;
+});
+</script>
+</body>
+</html>
