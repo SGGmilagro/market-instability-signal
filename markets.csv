@@ -1,101 +1,139 @@
 market,price,volume_24hr,entropy,entropy_velocity,entropy_direction,liquidity,liquidity_score,vol_acceleration,cluster,cluster_contagion,instability_score,alpha_signal
-Iran closes its airspace by May 24?,0.43,412155.959797,0.9858,0,flat,52326.29,0.0872,1.0,Iran,8,64.18,LONG
-Iran closes its airspace by May 21?,0.26,256134.50419700006,0.8267,0,flat,33992.32,0.1282,1.0,Iran,8,59.64,LONG
-Will Thomas Massie be the Republican nominee for KY-04?,0.37,208981.85334600013,0.9507,0,flat,139496.33,0.0346,0.1924,Other,4,55.58,LONG
-Will WTI Crude Oil (WTI) hit (HIGH) $110 in May?,0.61,314479.61285400006,0.9648,0,flat,42258.33,0.1058,-0.1654,Energy,2,55.17,WATCH
-Will Naftali Bennett be the next Prime Minister of Israel?,0.4,165709.033542,0.971,0,flat,47989.55,0.0944,-0.1767,Other,4,55.02,WATCH
-Iran closes its airspace by May 21?,0.19,249100.78936800009,0.7015,0,flat,41186.89,0.1083,1.0,Iran,8,54.76,WATCH
-Iran closes its airspace by May 31?,0.51,276246.108751,0.9997,0,flat,54414.95,0.0842,-0.3986,Iran,8,54.11,WATCH
-"MicroStrategy sells any Bitcoin by May 31, 2026?",0.41,284283.578417,0.9765,0,flat,54657.23,0.0838,-0.4541,Crypto,4,52.87,WATCH
-"Will Bitcoin dip to $75,000 in May?",0.74,188034.6904239999,0.8267,0,flat,61420.73,0.0753,0.0229,Crypto,4,50.99,WATCH
-"US x Iran permanent peace deal by June 15, 2026?",0.15,131229.29916100003,0.6098,0,flat,65834.42,0.0706,1.0,Iran,8,50.61,WATCH
-"US x Iran permanent peace deal by December 31, 2026?",0.63,184680.67377600007,0.9507,0,flat,649102.01,0.0076,-0.3831,Iran,8,50.59,WATCH
-Will Mojtaba Khamenei be head of state in Iran end of 2026?,0.649,161111.13375400004,0.935,0,flat,87579.12,0.054,-0.496,Iran,8,50.35,WATCH
-"Starmer out by June 30, 2026?",0.35,249809.30847399984,0.9341,0,flat,88883.29,0.0533,-0.5847,Other,4,49.64,WATCH
-"MicroStrategy sells any Bitcoin by June 30, 2026?",0.668,175913.09183000002,0.917,0,flat,62802.66,0.0737,-0.603,Crypto,4,49.42,WATCH
-Will WTI Crude Oil (WTI) hit (HIGH) $120 in May?,0.23,154027.995387,0.778,0,flat,71888.43,0.065,-0.3333,Energy,2,46.36,NEUTRAL
-"Will Bitcoin dip to $70,000 in May?",0.22,174774.51558500007,0.7602,0,flat,140700.1,0.0343,-0.1589,Crypto,4,46.27,WATCH
-Strait of Hormuz traffic returns to normal by end of June?,0.28,203083.05350500005,0.8555,0,flat,412131.96,0.012,-0.7867,Iran,8,44.34,WATCH
-Will the U.S. invade Iran before 2027?,0.31,241489.10143600006,0.8932,0,flat,865336.07,0.0057,-0.9419,Iran,8,44.34,WATCH
-Will Crude Oil (CL) hit (HIGH) $140 by end of June?,0.2,120616.47122000002,0.7219,0,flat,66712.22,0.0697,-0.3651,Energy,2,44.27,NEUTRAL
-Will WTI Crude Oil (WTI) hit (HIGH) $105 in May?,0.88,125690.13022199995,0.5294,0,flat,34565.74,0.1264,0.284,Energy,2,43.82,NEUTRAL
-"US x Iran permanent peace deal by June 30, 2026?",0.25,389077.62548499985,0.8113,0,flat,379586.04,0.013,-0.7286,Iran,8,43.26,WATCH
-"Will Bitcoin reach $85,000 in May?",0.12,367439.1224029999,0.5294,0,flat,161922.27,0.03,0.5253,Crypto,4,43.22,WATCH
-"Starmer out by December 31, 2026?",0.78,116897.436645,0.7602,0,flat,122146.38,0.0393,-0.6846,Other,4,42.45,WATCH
-Will Reza Pahlavi lead Iran in 2026?,0.066,1643877.7950409993,0.3508,0,flat,111239.0,0.043,1.0,Iran,8,40.85,WATCH
-Lai Ching-te impeached by June 30?,0.037,445054.272567,0.2284,0,flat,28145.09,0.1509,1.0,Other,4,39.27,WATCH
-Iran closes its airspace by May 18?,0.043,862406.3204240005,0.2559,0,flat,39886.71,0.1114,1.0,Iran,8,39.24,WATCH
-"Starmer out by May 31, 2026?",0.098,226672.87895599994,0.4626,0,flat,67816.07,0.0687,0.0247,Other,4,38.09,WATCH
-Will Trump agree to Iranian enrichment of uranium by May 31?,0.038,610844.4749070001,0.233,0,flat,54220.6,0.0844,1.0,Iran,8,37.77,WATCH
-"US x Iran diplomatic meeting by May 31, 2026?",0.14,107391.49241700003,0.5842,0,flat,70593.28,0.0661,-0.6637,Iran,8,37.12,WATCH
-"Will Donald Trump announce that the United States blockade of the Strait of Hormuz has been lifted by May 31, 2026?",0.15,100939.90154999998,0.6098,0,flat,97254.5,0.0489,-0.7918,Iran,8,36.63,WATCH
-"Will Bitcoin hit $150k by June 30, 2026?",0.014,5821652.894196,0.1063,0,flat,19822.56,0.2014,1.0,Crypto,4,36.26,WATCH
-Will Burnley FC win on 2026-05-18?,0.035,464568.24082899943,0.2189,0,flat,630889.83,0.0079,1.0,Other,4,35.36,WATCH
-Will WTI Crude Oil (WTI) hit (HIGH) $130 in May?,0.11,125021.29716400003,0.4999,0,flat,116434.79,0.0412,-0.4631,Energy,2,35.05,NEUTRAL
-Will the US confirm that aliens exist before 2027?,0.13,259605.9565869999,0.5574,0,flat,881229.45,0.0056,-0.9386,Other,4,32.61,WATCH
-Will Trump agree to Iranian transit fees in the Strait of Hormuz by May 31?,0.025,120679.22074799961,0.1687,0,flat,85490.5,0.0553,0.6674,Iran,8,32.29,WATCH
-"Starmer out by May 19, 2026?",0.009,373783.7522059999,0.0741,0,flat,61793.66,0.0749,1.0,Other,4,31.97,WATCH
-Will Elon Musk win his case against Sam Altman?,0.004,140245.832454,0.0376,0,flat,24352.96,0.1703,0.7453,Other,4,31.16,WATCH
-"Iran agrees to surrender enriched uranium stockpile by May 31, 2026?",0.048,142471.65545599998,0.2778,0,flat,138902.15,0.0347,-0.1263,Iran,8,29.64,WATCH
-"US x Iran permanent peace deal by May 31, 2026?",0.08,1347002.0104450001,0.4022,0,flat,459436.42,0.0108,-0.639,Iran,8,29.55,WATCH
-Will Putin visit China by May 31?,0.998,237854.11040099972,0.0208,0,flat,134556.17,0.0358,1.0,Geopolitical,0,29.12,NEUTRAL
-Will Amazon be the largest company in the world by market cap on May 31?,0.001,211274.695,0.0114,0,flat,46844.23,0.0964,0.8268,Other,4,29.01,WATCH
-"Will Bitcoin dip to $65,000 in May?",0.053,132632.13221499996,0.299,0,flat,109185.36,0.0438,-0.3937,Crypto,4,28.61,WATCH
-"Will the price of Bitcoin be above $80,000 on May 18?",0.001,520921.085634,0.0114,0,flat,291966.97,0.0168,1.0,Crypto,4,28.32,WATCH
-"Will the price of Ethereum be above $1,800 on May 18?",0.999,136377.906983,0.0114,0,flat,303126.95,0.0162,1.0,Crypto,4,28.3,WATCH
-"Will the price of Bitcoin be above $78,000 on May 18?",0.001,293689.29744700016,0.0114,0,flat,304451.66,0.0162,1.0,Crypto,4,28.3,WATCH
-"Will the price of Bitcoin be above $72,000 on May 18?",0.999,405262.52030800027,0.0114,0,flat,303695.25,0.0162,1.0,Crypto,4,28.3,WATCH
-"Will the price of Bitcoin be above $84,000 on May 18?",0.001,243850.43055399993,0.0114,0,flat,325777.56,0.0151,1.0,Crypto,4,28.28,WATCH
-"Will the price of Bitcoin be above $74,000 on May 18?",0.999,479980.28976199945,0.0114,0,flat,363817.33,0.0136,1.0,Crypto,4,28.24,WATCH
-"Will the price of Ethereum be above $2,100 on May 18?",0.999,130122.92041399996,0.0114,0,flat,357848.49,0.0138,1.0,Crypto,4,28.24,WATCH
-"Will the price of Bitcoin be above $82,000 on May 18?",0.001,475914.33137699997,0.0114,0,flat,400921.16,0.0123,1.0,Crypto,4,28.21,WATCH
-"Bitcoin Up or Down - May 18, 1PM ET",0.999,267596.629335,0.0114,0,flat,426322.47,0.0116,1.0,Crypto,4,28.19,WATCH
-Will WTI Crude Oil (WTI) hit (HIGH) $140 in May?,0.049,156043.13236199997,0.2821,0,flat,118003.17,0.0406,-0.377,Energy,2,28.06,NEUTRAL
-US obtains Iranian enriched uranium by May 31?,0.07,623799.8855549995,0.3659,0,flat,370714.95,0.0133,-0.6787,Iran,8,28.05,WATCH
-Trump declassifies new UFO files by May 15?,0.999,1155784.35,0.0114,0,flat,2543737.07,0.002,1.0,Other,4,27.95,WATCH
-Will the US confirm that aliens exist by June 30?,0.033,218917.00444399996,0.2092,0,flat,154354.04,0.0314,-0.0704,Other,4,27.58,WATCH
-Will China invade Taiwan by end of 2026?,0.075,335460.3321659998,0.3843,0,flat,979680.53,0.0051,-0.8995,Geopolitical,0,26.83,NEUTRAL
-Hantavirus pandemic in 2026?,0.068,264782.2113459996,0.3584,0,flat,1885649.82,0.0026,-0.8332,Pandemic,0,26.36,NEUTRAL
-"Will Bitcoin reach $90,000 in May?",0.021,198332.798984,0.147,0,flat,173039.06,0.0281,-0.0975,Crypto,4,25.12,WATCH
-Kharg Island no longer under Iranian control by May 31?,0.054,211983.60110200004,0.3032,0,flat,334534.38,0.0147,-0.7912,Iran,8,25.05,WATCH
-Strait of Hormuz traffic returns to normal by end of May?,0.047,564287.6068790001,0.2735,0,flat,398328.34,0.0124,-0.7478,Iran,8,24.27,WATCH
-Will the Iranian regime fall by June 30?,0.05,276119.5481879999,0.2864,0,flat,496356.41,0.01,-0.9524,Iran,8,23.13,WATCH
-Will the US confirm that aliens exist by May 31?,0.012,632546.9220820002,0.0938,0,flat,224121.36,0.0218,-0.1045,Other,4,23.04,WATCH
-"Trump renames Strait of Hormuz to ""Strait of Trump"" by May 31?",0.015,102162.29913700004,0.1124,0,flat,44501.85,0.101,-0.4603,Iran,8,23.01,WATCH
-Will Eric Trump win the 2028 US Presidential Election?,0.006,2193305.175067,0.0529,0,flat,3647510.4,0.0014,0.0843,Other,4,22.52,WATCH
-Putin out as President of Russia by June 30?,0.017,189284.5784540001,0.1242,0,flat,137987.56,0.035,-0.4753,Geopolitical,0,21.66,NEUTRAL
-Will Pete Hegseth win the 2028 Republican presidential nomination?,0.007,741469.5534740001,0.0602,0,flat,1565206.83,0.0032,-0.2564,Crypto,4,20.26,WATCH
-Will there be no change in Fed interest rates after the June 2026 meeting?,0.979,212085.32302999988,0.147,0,flat,544675.74,0.0091,-0.7441,Macro,0,19.79,NEUTRAL
-Will Eric Trump win the 2028 Republican presidential nomination?,0.007,812552.5909409999,0.0602,0,flat,1825824.78,0.0027,-0.3287,Other,4,19.71,WATCH
-Will the Fed increase interest rates by 25 bps after the June 2026 meeting?,0.008,473504.6706969994,0.0672,0,flat,299092.43,0.0164,-0.4535,Macro,0,19.36,NEUTRAL
-Will the Iranian regime fall by May 31?,0.02,662200.6006179997,0.1414,0,flat,582923.74,0.0085,-0.7892,Iran,8,19.24,WATCH
-Will Joe Kent win the 2028 Republican presidential nomination?,0.007,468336.043244,0.0602,0,flat,1164311.04,0.0043,-0.4985,Other,4,18.48,WATCH
-Will Xavier Bertrand win the 2027 French presidential election?,0.006,232606.82896400004,0.0529,0,flat,267030.73,0.0184,-0.5385,Other,4,18.27,WATCH
-"Will China invade Taiwan by June 30, 2026?",0.016,121998.994196,0.1184,0,flat,168129.3,0.0289,-0.8989,Geopolitical,0,18.12,NEUTRAL
-Will the Fed decrease interest rates by 25 bps after the June 2026 meeting?,0.006,366311.36676799983,0.0529,0,flat,284042.68,0.0173,-0.5788,Macro,0,17.94,NEUTRAL
-Will Élisabeth Borne win the 2027 French presidential election?,0.006,206751.16299700004,0.0529,0,flat,230023.54,0.0213,-0.5947,Crypto,4,17.92,WATCH
-Will François Bayrou win the 2027 French presidential election?,0.006,201276.69416600003,0.0529,0,flat,213995.04,0.0228,-0.6474,Other,4,17.57,WATCH
-Will WTI Crude Oil (WTI) hit (HIGH) $200 in May?,0.003,168426.652572,0.0295,0,flat,680038.5,0.0073,-0.4941,Energy,2,17.51,NEUTRAL
-Will Michel Barnier win the 2027 French presidential election?,0.006,154012.11436500002,0.0529,0,flat,174089.37,0.0279,-0.6971,Other,4,17.32,WATCH
-Will Elise Stefanik win the 2028 Republican presidential nomination?,0.007,1241814.7817479998,0.0602,0,flat,1892286.79,0.0026,-0.6679,Other,4,17.16,WATCH
-Will Erika Kirk win the 2028 Republican presidential nomination?,0.007,802980.028737,0.0602,0,flat,1815480.0,0.0027,-0.6742,Other,4,17.12,WATCH
-Will Steve Bannon win the 2028 Republican presidential nomination?,0.009,748879.749317,0.0741,0,flat,1213211.74,0.0041,-0.7549,Other,4,17.03,WATCH
-Will Amazon be the largest company in the world by market cap on June 30?,0.002,149709.58116600002,0.0208,0,flat,367820.88,0.0134,-0.5811,Other,4,16.7,WATCH
-Will 9 Fed rate cuts happen in 2026?,0.003,113700.362153,0.0295,0,flat,152424.29,0.0318,-0.6905,Macro,0,16.65,NEUTRAL
-Will Byron Donalds win the 2028 Republican presidential nomination?,0.008,1247364.452696,0.0672,0,flat,1487537.46,0.0033,-0.7919,Other,4,16.5,WATCH
-Will Manuel Bompard win the 2027 French presidential election?,0.005,105931.86179999998,0.0454,0,flat,216235.28,0.0226,-0.7618,Other,4,16.44,WATCH
-Will Ahn Cheol-soo win the 2026 Seoul Mayoral Election,0.001,171966.342,0.0114,0,flat,468766.97,0.0106,-0.6088,Other,4,16.1,WATCH
-Will the Fed decrease interest rates by 50+ bps after the June 2026 meeting?,0.005,275558.725565,0.0454,0,flat,776610.25,0.0064,-0.7551,Macro,0,16.09,NEUTRAL
-Will Tom Brady win the 2028 Republican presidential nomination?,0.008,572376.2360660001,0.0672,0,flat,1880419.23,0.0027,-0.8708,Other,4,15.89,WATCH
-Will Katie Britt win the 2028 Republican presidential nomination?,0.009,348733.8039420001,0.0741,0,flat,1888645.2,0.0026,-0.9123,Other,4,15.82,WATCH
-Will Kim Kardashian win the 2028 Republican presidential nomination?,0.008,442381.28844299994,0.0672,0,flat,1980936.83,0.0025,-0.8876,Other,4,15.76,WATCH
-"Will Bitcoin reach $150,000 in May?",0.003,150712.28066600012,0.0295,0,flat,1259055.21,0.004,-0.7286,Crypto,4,15.67,WATCH
-Will Greg Abbott win the 2028 US Presidential Election?,0.01,103267.023197,0.0808,0,flat,1721054.39,0.0029,-0.9781,Other,4,15.56,WATCH
-Will Ted Cruz win the 2028 Republican presidential nomination?,0.008,158687.105779,0.0672,0,flat,964324.94,0.0052,-0.9344,Other,4,15.47,WATCH
-Will Elon Musk win the 2028 Republican presidential nomination?,0.009,128933.367798,0.0741,0,flat,1772455.87,0.0028,-0.9678,Other,4,15.4,WATCH
-Will Roy Cooper win the 2028 Democratic presidential nomination?,0.009,112482.93746699987,0.0741,0,flat,1525114.18,0.0033,-0.9732,Other,4,15.38,WATCH
-Will John Thune win the 2028 Republican presidential nomination?,0.007,269245.9546869999,0.0602,0,flat,1869529.64,0.0027,-0.9435,Other,4,15.1,WATCH
-Will Kim Kardashian win the 2028 US Presidential Election?,0.006,172569.77109699987,0.0529,0,flat,1451373.53,0.0034,-0.9661,Other,4,14.69,WATCH
-Will the Fed increase interest rates by 50+ bps after the June 2026 meeting?,0.002,188365.76399600017,0.0208,0,flat,1668932.65,0.003,-0.8189,Macro,0,14.66,NEUTRAL
-Will Beto O’Rourke win the 2028 Democratic presidential nomination?,0.006,157405.19514000008,0.0529,0,flat,1719300.01,0.0029,-0.9719,Other,4,14.63,WATCH
-Strait of Hormuz traffic returns to normal by May 15?,0.001,138954.26999999996,0.0114,0,flat,1995172.26,0.0025,-0.9449,Iran,8,13.37,WATCH
+"Will Russia capture Bilytske by September 30, 2026?",0.17,39044.362223,0.6577,0,flat,1974.96,0.7168,1.0,Geopolitical,1,68.44,NEUTRAL
+"Will Ethereum reach $2,700 in September?",0.54,71116.755549,0.9954,0,flat,25765.76,0.1625,1.0,Crypto,4,66.4,LONG
+Counter-Strike: Walczaki vs ex-Zero Tenacity (BO3) - CCT Europe Series #8 Playoffs,0.49,50634.201432999995,0.9997,0,flat,32629.51,0.1329,1.0,Other,19,65.81,LONG
+"Will Jared Kushner attend a US x Iran diplomatic meeting by December 31, 2026?",0.26,45277.13547699999,0.8267,0,flat,8880.47,0.3602,1.0,Iran,5,65.44,LONG
+Will WTI Crude Oil (WTI) hit (HIGH) $105 in September?,0.578,85638.54844100004,0.9824,0,flat,22232.98,0.1836,0.8017,Energy,3,64.99,WATCH
+Counter-Strike: regain vs Marsborne (BO3) - NSTLGA League Playoffs,0.49,42456.36085000001,0.9997,0,flat,57427.61,0.0801,1.0,Other,19,64.49,LONG
+Counter-Strike: MORROW vs ex-Zero Tenacity (BO3) - CCT Europe Challengers Series Playoffs,0.5,77878.254744,1.0,0,flat,69396.23,0.0672,1.0,Other,19,64.18,LONG
+"Will Bitcoin reach $80,000 in September?",0.61,69041.06124499999,0.9648,0,flat,49173.54,0.0923,1.0,Crypto,4,63.58,WATCH
+LoL: Anyone's Legend vs Invictus Gaming (BO5) - LPL Playoffs,0.49,109181.497045,0.9997,0,flat,352235.09,0.014,1.0,Other,19,62.84,LONG
+Map Handicap: LGC (-1.5) vs MIBR (+1.5),0.39,74982.55518500002,0.9648,0,flat,75356.58,0.0622,1.0,Other,19,62.82,LONG
+Will Brighton & Hove Albion FC win on 2026-09-13?,0.52,71921.228952,0.9988,0,flat,140738.8,0.0343,0.8795,Other,19,62.41,LONG
+Counter-Strike: BetBoom Team vs G2 (BO3) - FISSURE PLAYGROUND Playoffs,0.39,74881.08434199999,0.9648,0,flat,109464.2,0.0437,1.0,Other,19,62.36,LONG
+Will Newcastle United FC win on 2026-09-14?,0.33,179991.143245,0.9149,0,flat,152948.47,0.0317,1.0,Other,19,60.31,LONG
+Counter-Strike: Legacy vs MIBR (BO3) - FISSURE PLAYGROUND Playoffs,0.69,294164.41764299985,0.8932,0,flat,214208.8,0.0228,1.0,Other,19,59.33,WATCH
+US Open ATP: Frances Tiafoe vs Ben Shelton,0.29,111181.69239999999,0.8687,0,flat,2154129.22,0.0023,1.0,Other,19,57.96,LONG
+Will Alexander Zverev win the 2026 Men's US Open?,0.535,246041.26251799997,0.9965,0,flat,57519.12,0.08,0.1166,Other,19,57.75,LONG
+Will there be no change in Fed interest rates after the October 2026 meeting?,0.62,58111.455685,0.958,0,flat,142945.39,0.0338,0.3779,Macro,2,57.21,WATCH
+Will the Fed increase interest rates by 25 bps after the October 2026 meeting?,0.37,71400.506292,0.9507,0,flat,137409.82,0.0351,0.3681,Macro,2,56.91,LONG
+Will Magdalena Andersson be the next Prime Minister of Sweden?,0.73,212152.77534999998,0.8415,0,flat,84084.26,0.0561,0.8039,Other,19,56.88,WATCH
+Will WTI Crude Oil (WTI) hit (HIGH) $110 in September?,0.35,53929.94961799999,0.9341,0,flat,34241.05,0.1274,0.1113,Energy,3,56.71,LONG
+Will Elena Rybakina win the 2026 Women’s US Open?,0.44,86349.499201,0.9896,0,flat,128237.82,0.0375,0.1105,Other,19,56.4,LONG
+Bab el-Mandeb Strait effectively closed by October 31?,0.21,71918.45967999999,0.7415,0,flat,62774.77,0.0738,0.9175,Other,19,54.68,WATCH
+Genoa: Juan Pablo Varillas vs Thiago Seyboth Wild,0.21,108397.591792,0.7415,0,flat,172077.46,0.0282,1.0,Other,19,54.16,WATCH
+"Will Bitcoin reach $95,000 by December 31, 2026?",0.34,82247.488331,0.9248,0,flat,55915.48,0.0821,-0.059,Crypto,4,53.98,WATCH
+"Will Bitcoin reach $82,500 in September?",0.38,41827.736478000006,0.958,0,flat,72386.0,0.0646,-0.3476,Crypto,4,52.54,WATCH
+Iran-Oman Hormuz Agreement by September 30?,0.37,41562.10040100001,0.9507,0,flat,43431.17,0.1032,-0.4429,Iran,5,52.53,WATCH
+Will Ulf Kristersson be the next Prime Minister of Sweden?,0.26,100169.960422,0.8267,0,flat,128428.78,0.0375,0.3367,Other,19,52.4,LONG
+Will Ben Shelton win the 2026 Men's US Open?,0.343,71136.40226299998,0.9277,0,flat,28465.19,0.1494,-0.5936,Other,19,51.75,WATCH
+Will WTI Crude Oil (WTI) hit (HIGH) $115 in September?,0.219,43280.079962999975,0.7583,0,flat,35226.99,0.1243,0.2415,Energy,3,51.46,LONG
+"Will the price of Bitcoin be above $78,000 on September 12?",0.14,109088.315572,0.5842,0,flat,33490.43,0.1299,1.0,Crypto,4,51.19,WATCH
+Bab el-Mandeb Strait effectively closed by December 31?,0.27,76300.140403,0.8415,0,flat,71977.47,0.065,-0.2062,Other,19,49.53,WATCH
+US Open ATP: Alexander Zverev vs Karen Khachanov,0.85,3090414.392244999,0.6098,0,flat,408802.79,0.0121,1.0,Other,19,49.15,WATCH
+Will Flávio Bolsonaro win the 2026 Brazilian presidential election?,0.534,210047.91377499996,0.9967,0,flat,177979.2,0.0273,-0.8585,Other,19,49.13,WATCH
+"US announces end of Iranian blockade by October 31, 2026?",0.38,40872.66267,0.958,0,flat,111862.62,0.0428,-0.7437,Iran,5,49.02,WATCH
+Will Luiz Inácio Lula da Silva win the 2026 Brazilian presidential election?,0.44,226532.484697,0.9896,0,flat,206597.84,0.0236,-0.8521,Other,19,48.84,WATCH
+Will FC Barcelona win on 2026-09-13?,0.86,39782.629172999994,0.5842,0,flat,172610.95,0.0282,1.0,Other,19,48.65,WATCH
+"US announces end of Iranian blockade by December 31, 2026?",0.647,62341.50084100001,0.9367,0,flat,211060.93,0.0231,-0.7316,Iran,5,47.87,WATCH
+Will Marine Le Pen win the 2027 French presidential election?,0.342,108601.05866,0.9267,0,flat,248384.09,0.0197,-0.6836,Other,19,47.8,WATCH
+US x Iran Effective Ceasefire by September 4?,0.76,118039.21833099998,0.795,0,flat,35831.09,0.1225,-0.4425,Iran,5,47.57,WATCH
+Will Sevilla FC win on 2026-09-11?,0.89,4220982.607524986,0.4999,0,flat,51245.48,0.0889,1.0,Other,19,47.22,WATCH
+Will the Fed increase interest rates by 25 bps after the September 2026 meeting?,0.81,4815886.283006998,0.7015,0,flat,1314910.83,0.0038,0.2613,Macro,2,46.61,NEUTRAL
+Will there be no change in Fed interest rates after the September 2026 meeting?,0.18,5909892.732514013,0.6801,0,flat,864368.58,0.0058,0.2373,Macro,2,45.73,NEUTRAL
+"Will Bitcoin dip to $74,000 September 7-13?",0.079,44302.874375,0.3986,0,flat,32616.24,0.1329,1.0,Crypto,4,44.77,WATCH
+"Will Ethereum reach $2,800 September 7-13?",0.059,42576.747304,0.3235,0,flat,16939.52,0.2279,1.0,Crypto,4,44.52,WATCH
+Fed Rate Hike by September 2026 Meeting?,0.81,138918.586474,0.7015,0,flat,80849.1,0.0582,-0.3657,Macro,2,43.26,NEUTRAL
+Israel x Iran ceasefire continues through September 15?,0.94,59027.691434,0.3274,0,flat,45052.72,0.0999,1.0,Iran,5,41.46,WATCH
+"US announces end of Iranian blockade by September 30, 2026?",0.21,78319.579526,0.7415,0,flat,96534.37,0.0492,-0.8213,Iran,5,41.02,WATCH
+"US announces end of Iranian blockade by September 21, 2026?",0.13,77312.904801,0.5574,0,flat,44266.35,0.1015,-0.2854,Iran,5,39.91,WATCH
+Will United Russia (ER) gain the most seats in the next Russian parliamentary election?,0.78,95109.95133900002,0.7602,0,flat,441232.87,0.0112,-0.9313,Geopolitical,1,39.9,NEUTRAL
+Will Willem II Tilburg win on 2026-09-11?,0.048,48537.746985,0.2778,0,flat,91788.67,0.0517,1.0,Other,19,38.52,WATCH
+Will Crude Oil reach a new all-time high by December 31?,0.14,94602.83281800002,0.5842,0,flat,87851.21,0.0538,-0.4397,Energy,3,38.49,NEUTRAL
+Strait of Hormuz traffic returns to normal by December 31?,0.19,164540.79245,0.7015,0,flat,438987.43,0.0113,-0.8989,Iran,5,38.09,WATCH
+Will WTI Crude Oil (WTI) hit (HIGH) $130 in September?,0.044,77103.08507600002,0.2603,0,flat,99937.96,0.0476,1.0,Energy,3,37.8,NEUTRAL
+Will New People (NL) gain the most seats in the next Russian parliamentary election?,0.171,55166.682947999994,0.66,0,flat,198994.59,0.0245,-0.8667,Geopolitical,1,37.21,NEUTRAL
+Clarity Act (H.R.3633) signed into law in 2026?,0.17,331067.3480929999,0.6577,0,flat,686714.36,0.0072,-0.8464,Other,19,36.85,WATCH
+Israel x Iran ceasefire continues through September 30?,0.85,62196.74715199999,0.6098,0,flat,99389.0,0.0479,-0.7646,Iran,5,36.81,WATCH
+Fed Rate Hike by October 2026 Meeting?,0.87,49189.408751999996,0.5574,0,flat,110564.18,0.0433,-0.5056,Macro,2,36.8,NEUTRAL
+"Will the price of Bitcoin be above $76,000 on September 12?",0.976,63895.741762000005,0.1633,0,flat,35821.36,0.1225,1.0,Crypto,4,36.28,WATCH
+"Will the price of Bitcoin be above $80,000 on September 12?",0.024,97912.58088400001,0.1633,0,flat,35908.4,0.1222,1.0,Crypto,4,36.27,WATCH
+"Will Bitcoin dip to $72,000 September 7-13?",0.023,45492.657729,0.158,0,flat,38833.98,0.1141,1.0,Crypto,4,35.88,WATCH
+Will the Republican Party control the House after the 2026 Midterm elections?,0.14,168675.97972700003,0.5842,0,flat,771265.31,0.0064,-0.7463,Other,19,35.01,WATCH
+"Will Bitcoin reach $82,000 September 7-13?",0.02,45953.548885,0.1414,0,flat,45728.72,0.0986,1.0,Crypto,4,34.91,WATCH
+Will the U.S. invade Iran before 2027?,0.15,358778.64039100014,0.6098,0,flat,686020.6,0.0072,-0.9617,Iran,5,34.31,WATCH
+Will Karen Khachanov win the 2026 Men's US Open?,0.042,136172.37571300002,0.2514,0,flat,49319.94,0.092,0.3023,Other,19,33.37,WATCH
+Will AZ win on 2026-09-11?,0.02,88056.240222,0.1414,0,flat,137664.59,0.035,1.0,Other,19,33.32,WATCH
+Bab el-Mandeb Strait effectively closed by September 30?,0.098,186906.435699,0.4626,0,flat,110718.64,0.0432,-0.5294,Other,19,33.3,WATCH
+"Will the price of Bitcoin be above $74,000 on September 12?",0.992,74674.803589,0.0672,0,flat,32845.13,0.1321,1.0,Crypto,4,33.15,WATCH
+"2026 Balance of Power: R Senate, R House",0.13,48514.637532,0.5574,0,flat,433707.14,0.0114,-0.8868,Other,19,33.14,WATCH
+"Will China invade Taiwan by December 31, 2027?",0.12,68238.664617,0.5294,0,flat,202181.72,0.0241,-0.8511,Geopolitical,1,32.75,NEUTRAL
+Will the Democratic Party control the House after the 2026 Midterm elections?,0.88,165128.706287,0.5294,0,flat,872711.89,0.0057,-0.814,Other,19,32.57,WATCH
+Will Olympique de Marseille win on 2026-09-11?,0.017,136331.671224,0.1242,0,flat,229966.16,0.0213,1.0,Other,19,32.38,WATCH
+Will WTI Crude Oil (WTI) hit (HIGH) $150 in September?,0.014,101574.44599799998,0.1063,0,flat,112898.0,0.0424,1.0,Energy,3,32.28,NEUTRAL
+Will Frances Tiafoe win the 2026 Men's US Open?,0.08,64333.636223,0.4022,0,flat,60222.22,0.0767,-0.5263,Other,19,32.05,WATCH
+Strait of Hormuz traffic returns to normal by October 31?,0.08,55273.794281999995,0.4022,0,flat,152149.0,0.0318,-0.3863,Iran,5,31.97,WATCH
+Will FC Salzburg win on 2026-09-11?,0.01,41507.99597600002,0.0808,0,flat,71515.41,0.0653,1.0,Other,19,31.96,WATCH
+"Will the price of Bitcoin be above $82,000 on September 12?",0.003,66316.479004,0.0295,0,flat,34927.33,0.1252,1.0,Crypto,4,31.66,WATCH
+"Will the price of Bitcoin be above $72,000 on September 12?",0.998,55323.546152999996,0.0208,0,flat,33984.28,0.1283,1.0,Crypto,4,31.44,WATCH
+"US-Iran Final Nuclear Deal by December 31, 2026?",0.11,42808.227268,0.4999,0,flat,231517.0,0.0211,-0.8887,Iran,5,31.36,WATCH
+Will Empoli FC win on 2026-09-11?,0.009,65931.134124,0.0741,0,flat,102626.9,0.0465,1.0,Other,19,31.26,WATCH
+Will SV Ried win on 2026-09-11?,0.001,66131.68951799998,0.0114,0,flat,40499.79,0.1099,1.0,Other,19,30.65,WATCH
+"Will the price of Bitcoin be above $70,000 on September 12?",0.999,50896.2963,0.0114,0,flat,52142.77,0.0875,1.0,Crypto,4,30.09,WATCH
+Will Valencia CF win on 2026-09-11?,0.004,119979.63871799997,0.0376,0,flat,101416.4,0.047,1.0,Other,19,29.99,WATCH
+Will Pisa SC win on 2026-09-11?,0.004,40635.866003999996,0.0376,0,flat,111875.87,0.0428,1.0,Other,19,29.89,WATCH
+Counter-Strike:  Phantom Academy vs KAMUI (BO3) - Exort Fiesta Group Stage,0.999,271100.718595,0.0114,0,flat,60645.02,0.0762,1.0,Other,19,29.8,WATCH
+"Will Bitcoin dip to $45,000 by December 31, 2026?",0.1,55916.369726,0.469,0,flat,384885.05,0.0128,-0.9426,Crypto,4,29.67,WATCH
+Will Rodri win the 2026 Ballon d'Or?,0.06,132554.42966,0.3274,0,flat,115316.98,0.0416,-0.4435,Other,19,29.17,WATCH
+Will Tom Cotton win the 2028 Republican presidential nomination?,0.002,496000.0,0.0208,0,flat,147042.48,0.0329,1.0,Other,19,29.05,WATCH
+Will FC København win on 2026-09-11?,0.999,41308.47806200001,0.0114,0,flat,122478.78,0.0392,1.0,Other,19,28.88,WATCH
+Will Al Ahli Saudi Club win on 2026-09-11?,0.999,74268.95515800001,0.0114,0,flat,147540.13,0.0328,1.0,Other,19,28.72,WATCH
+Fed rate hike in 2026?,0.92,195964.50429599997,0.4022,0,flat,121470.07,0.0395,-0.8483,Macro,2,28.7,NEUTRAL
+Will Burgos CF win on 2026-09-11?,0.999,65829.33089399998,0.0114,0,flat,163528.64,0.0297,1.0,Other,19,28.64,WATCH
+Will Wrexham AFC win on 2026-09-11?,0.002,123392.03794299999,0.0208,0,flat,304814.9,0.0161,1.0,Other,19,28.63,WATCH
+Will Venezia FC win on 2026-09-11?,0.001,157492.63006700008,0.0114,0,flat,195984.94,0.0249,1.0,Other,19,28.52,WATCH
+Will West Ham United FC win on 2026-09-11?,0.999,210164.98214600005,0.0114,0,flat,300825.12,0.0163,1.0,Other,19,28.31,WATCH
+Will ACF Fiorentina win on 2026-09-11?,0.999,1382208.6164390002,0.0114,0,flat,923930.95,0.0054,1.0,Other,19,28.03,WATCH
+Seville: Max Alcala Gurri vs Genaro Alberto Olivieri,0.999,375648.7925670002,0.0114,0,flat,927614.5,0.0054,1.0,Other,19,28.03,WATCH
+Will Stade Rennais FC 1901 win on 2026-09-11?,0.999,3138391.465876001,0.0114,0,flat,1075937.18,0.0046,1.0,Other,19,28.01,WATCH
+"Will Bitcoin reach $100,000 in September?",0.017,69833.92495,0.1242,0,flat,138045.28,0.035,0.1164,Crypto,4,26.1,WATCH
+"Putin out as President of Russia by December 31, 2026?",0.07,150826.080426,0.3659,0,flat,477207.57,0.0104,-0.9489,Geopolitical,1,25.95,NEUTRAL
+Trump out as President before 2027?,0.05,71280.937901,0.2864,0,flat,332944.71,0.0148,-0.9567,Other,19,23.22,WATCH
+"Ethereum all time high by September 30, 2026?",0.006,48429.30651899999,0.0529,0,flat,61541.26,0.0751,-0.1133,Crypto,4,22.88,WATCH
+Will the Fed increase interest rates by 50+ bps after the September 2026 meeting?,0.008,2421364.1196729997,0.0672,0,flat,1266050.9,0.0039,-0.0615,Macro,2,21.99,NEUTRAL
+"US announces end of Iranian blockade by September 14, 2026?",0.017,111395.73410500001,0.1242,0,flat,138108.11,0.0349,-0.4716,Iran,5,21.68,WATCH
+Israel closes its airspace by September 30?,0.976,136300.916144,0.1633,0,flat,199986.6,0.0244,-0.6343,Other,19,21.57,WATCH
+Strait of Hormuz traffic returns to normal by September 15?,0.003,305594.794471,0.0295,0,flat,404776.62,0.0122,-0.0186,Iran,5,21.2,WATCH
+Will the US confirm that aliens exist before 2027?,0.038,104744.57527500002,0.233,0,flat,779852.61,0.0064,-0.9809,Other,19,20.96,WATCH
+Will China invade Taiwan by end of 2026?,0.038,39453.50549000001,0.233,0,flat,499208.11,0.0099,-0.9933,Geopolitical,1,20.95,NEUTRAL
+Will Crude Oil reach a new all-time high by September 30?,0.023,63076.40226499999,0.158,0,flat,154478.36,0.0314,-0.7356,Energy,3,20.8,NEUTRAL
+Will the Liberal Democratic Party of Russia (LDPR) gain the most seats in the next Russian parliamentary election?,0.03,43408.389042999996,0.1944,0,flat,254954.59,0.0192,-0.9196,Geopolitical,1,20.39,NEUTRAL
+Kharg Island no longer under Iranian control by September 30?,0.015,70263.68325500001,0.1124,0,flat,142733.92,0.0338,-0.6144,Iran,5,20.17,WATCH
+Will Bruno Retailleau win the 2027 French presidential election?,0.022,57586.83008100001,0.1525,0,flat,210286.92,0.0232,-0.8195,Other,19,19.77,WATCH
+Hantavirus pandemic in 2026?,0.025,40291.123973,0.1687,0,flat,202579.87,0.0241,-0.9845,Pandemic,0,19.12,NEUTRAL
+Will Jimmie Åkesson be the next Prime Minister of Sweden?,0.014,41277.770629,0.1063,0,flat,111603.32,0.0429,-0.8224,Other,19,18.62,WATCH
+Will François Ruffin win the 2027 French presidential election?,0.001,374058.551,0.0114,0,flat,525183.96,0.0094,-0.2692,Other,19,18.61,WATCH
+Will Adam Schiff win the 2028 Democratic presidential nomination?,0.001,50000.0,0.0114,0,flat,1987230.65,0.0025,-0.2852,Other,19,18.32,WATCH
+Will Marine Tondelier win the 2027 French presidential election?,0.001,393508.052,0.0114,0,flat,515593.92,0.0096,-0.3259,Other,19,18.19,WATCH
+Will Renan Santos win the 2026 Brazilian presidential election?,0.02,95551.93084,0.1414,0,flat,387435.96,0.0127,-0.9496,Other,19,18.14,WATCH
+Will the Fed decrease interest rates by 25 bps after the September 2026 meeting?,0.004,2755266.1067680004,0.0376,0,flat,2089849.41,0.0024,-0.4746,Macro,2,17.82,NEUTRAL
+Strait of Hormuz traffic returns to normal by September 30?,0.016,114625.33489600004,0.1184,0,flat,280676.25,0.0175,-0.9047,Iran,5,17.8,WATCH
+Will the Iranian regime fall by September 30?,0.014,39546.924463,0.1063,0,flat,227382.5,0.0215,-0.8688,Iran,5,17.74,WATCH
+Will Éric Zemmour win the 2027 French presidential election?,0.009,57891.760182,0.0741,0,flat,191913.86,0.0254,-0.8228,Other,19,17.06,WATCH
+Will Yabloko gain the most seats in the next Russian parliamentary election?,0.001,102246.10550000002,0.0114,0,flat,262060.85,0.0187,-0.6189,Geopolitical,1,16.22,NEUTRAL
+Will Romeu Zema win the 2026 Brazilian presidential election?,0.001,392095.61433400004,0.0114,0,flat,447401.14,0.0111,-0.6213,Other,19,16.02,WATCH
+Will Yossi Cohen be the next Prime Minister of Israel?,0.002,67844.072668,0.0208,0,flat,166098.39,0.0292,-0.8039,Other,19,15.43,WATCH
+Will A Just Russia – For Truth (SRZP) gain the most seats in the next Russian parliamentary election?,0.001,106191.96999999997,0.0114,0,flat,489745.3,0.0101,-0.7014,Geopolitical,1,15.39,NEUTRAL
+Will the Fed decrease interest rates by 50+ bps after the September 2026 meeting?,0.001,696356.0970000001,0.0114,0,flat,3711103.44,0.0013,-0.687,Macro,2,15.28,NEUTRAL
+Will Kristi Noem win the 2028 Republican presidential nomination?,0.002,1260950.381,0.0208,0,flat,1268046.58,0.0039,-0.7654,Other,19,15.09,WATCH
+Will Ronaldo Caiado win the 2026 Brazilian presidential election?,0.005,111687.991334,0.0454,0,flat,898454.8,0.0055,-0.8956,Other,19,15.01,WATCH
+Will Ivanka Trump win the 2028 US Presidential Election?,0.006,47868.67595,0.0529,0,flat,436507.31,0.0113,-0.9592,Other,19,14.94,WATCH
+Will Tulsi Gabbard win the 2028 Republican presidential nomination?,0.004,185329.006107,0.0376,0,flat,987487.84,0.005,-0.907,Other,19,14.64,WATCH
+Will Josh Stein win the 2028 Democratic presidential nomination?,0.002,50004.4,0.0208,0,flat,1962920.88,0.0025,-0.8527,Other,19,14.4,WATCH
+Will Augusto Cury win the 2026 Brazilian presidential election?,0.003,46752.67625,0.0295,0,flat,423239.71,0.0117,-0.9291,Other,19,14.36,WATCH
+Will Stephen A. Smith win the 2028 Democratic presidential nomination?,0.001,602993.42,0.0114,0,flat,1886583.09,0.0026,-0.8165,Other,19,14.34,WATCH
+Will Xavier Bertrand win the 2027 French presidential election?,0.001,67609.759,0.0114,0,flat,192955.64,0.0253,-0.9199,Other,19,14.13,WATCH
+Will Fernando Haddad win the 2026 Brazilian presidential election?,0.001,105082.41,0.0114,0,flat,413843.52,0.0119,-0.9023,Other,19,13.93,WATCH
+Will Pablo Marçal win the 2026 Brazilian presidential election?,0.001,40545.806,0.0114,0,flat,424132.89,0.0117,-0.9285,Other,19,13.73,WATCH
+Will Jair Bolsonaro win the 2026 Brazilian presidential election?,0.001,47423.438,0.0114,0,flat,464952.8,0.0106,-0.9516,Other,19,13.53,WATCH
+Will George Clooney win the 2028 Democratic presidential nomination?,0.001,50175.5,0.0114,0,flat,2710119.28,0.0018,-0.9919,Other,19,13.0,WATCH

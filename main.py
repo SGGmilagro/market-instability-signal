@@ -20,7 +20,8 @@ NOISE_KEYWORDS = [
     "serie a", "bundesliga", "ligue 1", "eredivisie",
     "up or down on", "up or down this", "daily:", "spy (spy)", "spx)",
     "james bond", "announced as next", "will trump say", "henry cavill",
-    "tom holland", "bret baier", "istanbul:", "pol martin"
+    "tom holland", "bret baier", "istanbul:", "pol martin", "counter-strike", "lol:", "league of legends", "map handicap",
+    "bo3", "bo5", "bo1", "nswc", "dota", "valorant", "cs2" 
 ]
 
 CLUSTERS = {
