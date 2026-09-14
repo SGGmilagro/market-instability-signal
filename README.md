@@ -112,3 +112,25 @@ instability = (entropy × 0.35) + (entropy_velocity × 0.25) +
 - **Cross-cluster cascade scoring** — did instability start in Iran then spread to Energy?
 - **Backtest** — entropy index at T vs VIX/realized vol at T+1
 - **WebSocket feed** — real-time entropy updates via Polymarket's CLOB WebSocket
+
+## Data & Reproducibility
+
+### Primary dataset
+`dune_data.csv` — 1,085,589 on-chain Polymarket trade records,
+January 2023 to September 2026, sourced from `polymarket_polygon.market_trades`
+via Dune Analytics. Excluded from this repo (254MB) but fully regeneratable.
+
+**To regenerate:**
+1. Create a free account at [dune.com](https://dune.com)
+2. Create a new query and paste the contents of `dune_query.sql`
+3. Run the query and export results as CSV
+4. Save as `dune_data.csv` in the project root
+
+### Running the backtest
+```bash
+pip install -r requirements.txt
+python backtest.py
+```
+
+Outputs: entropy time series, benchmark data, merged analysis,
+regime probabilities, and all figures used in the paper.
