@@ -3,3 +3,4 @@ __pycache__/
 .DS_Store
 Screenshot*
 venv/
+dune_data.zip
